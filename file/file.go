@@ -259,12 +259,12 @@ func (d *Dapperfile) build(args []string, copy bool) (string, error) {
 		}
 	}
 
-	if !copy {
-		return tag, nil
-	}
-
 	if err := d.readEnv(tag); err != nil {
 		return "", err
+	}
+
+	if !copy {
+		return tag, nil
 	}
 
 	if !d.IsBind() {
