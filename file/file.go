@@ -104,6 +104,8 @@ func (d *Dapperfile) argsFromEnv(dockerfile string) ([]string, error) {
 		}
 	}
 
+	logrus.Debugf("argsFromEnv: %s", r)
+
 	return r, nil
 }
 
@@ -216,7 +218,8 @@ func (d *Dapperfile) findHostArch() string {
 }
 
 func (d *Dapperfile) Build(args []string) error {
-	_, err := d.build(nil, false)
+	logrus.Debugf("Build args: %s", args)
+	_, err := d.build(args, false)
 	return err
 }
 
